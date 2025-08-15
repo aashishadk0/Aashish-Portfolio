@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aashish | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="images/logo.png" alt="Logo" class="loading-image">
+            </div>
+            <div class="loading-text">Aashish Adhikari</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Left: Profile Photo -->
+            <div class="navbar-left">
+                <img src="images/logo.png" alt="Aashish Profile" class="profile-photo">
+            </div>
+            
+            <!-- Center: Navigation Menu (Desktop) -->
+            <div class="navbar-center">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Right: Theme Toggle + Hamburger -->
+            <div class="navbar-right">
+                <!-- Theme Toggle Button -->
+                <div class="theme-toggle" id="theme-toggle">
+                    <div class="theme-toggle-slider"></div>
+                    <i class="fas fa-sun theme-toggle-icon sun"></i>
+                    <i class="fas fa-moon theme-toggle-icon moon"></i>
+                </div>
+                
+                <!-- Hamburger Menu (Mobile) -->
+                <div class="hamburger" id="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" class="mobile-nav-link active">Home</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <!-- Particle Canvas -->
+            <canvas id="particle-canvas"></canvas>
+            
+            <!-- Hero Content -->
+            <div class="hero-container">
+                <div class="hero-content">
+                    <!-- Greeting -->
+                    <p class="hero-greeting">HELLO, I'M</p>
+                    
+                    <!-- Main Name -->
+                    <h1 class="hero-name">Aashish Adhikari</h1>
+                    
+                    <!-- Typed Role -->
+                    <h2 class="hero-role">
+                        <span id="typed-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </h2>
+                    
+                    <!-- Description -->
+                    <p class="hero-description">
+                        I create innovative web applications using modern technologies
+                        like Python, Django, Flask, and JavaScript. Passionate about
+                        turning ideas into digital reality.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="hero-social">
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Profile Image -->
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="/images/aashish.jpg" alt="Aashish Adhikari" class="profile-image">
+                        
+                        <!-- Floating Badges -->
+                        <div class="floating-badge badge-1">
+                            <i class="fas fa-code"></i>
+                            <span>Full Stack</span>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fab fa-html5"></i>
+                            <span>Frontend</span>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fas fa-database"></i>
+                            <span>Backend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); padding: 2rem; position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 800px;">
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">About Me</h2>
+                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">I'm a BCA student passionate about web development and technology. Currently studying at Lumbini ICT Campus in Nawalpur, Nepal.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); padding: 2rem;">
+            <div style="text-align: center; max-width: 800px;">
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Skills</h2>
+                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">HTML, CSS, JavaScript, React, Node.js, and more technologies I'm learning every day.</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); padding: 2rem;">
+            <div style="text-align: center; max-width: 800px;">
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Projects</h2>
+                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">Here are some of the projects I've worked on during my learning journey.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); padding: 2rem;">
+            <div style="text-align: center; max-width: 800px;">
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Contact</h2>
+                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">Let's connect! Reach out to me for collaboration or just to say hello.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:aashish@example.com" style="color: var(--brand-color); text-decoration: none; font-size: 1.2rem;">aashish@example.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/hero.js"></script>
+</body>
+</html>
