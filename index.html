@@ -2,23 +2,58 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aashish | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Aashish Adhikari - Full Stack Web Developer specializing in Python, Django, Flask, and JavaScript. Creating innovative web applications.">
+    <meta name="keywords" content="Aashish Adhikari, Web Developer, Python Developer, Full Stack, Django, Flask, JavaScript, Portfolio">
+    <meta name="author" content="Aashish Adhikari">
+    <meta property="og:title" content="Aashish Adhikari | Portfolio">
+    <meta property="og:description" content="Full Stack Web Developer creating innovative web applications using modern technologies">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Aashish Adhikari | Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loading-screen">
+        <!-- Animated Background Waves -->
+        <div class="wave-container">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        
+        <!-- Loading Particles -->
+        <div class="loading-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="loading-content">
             <div class="loading-logo">
                 <img src="images/logo.png" alt="Logo" class="loading-image">
             </div>
-            <div class="loading-text">Aashish Adhikari</div>
+            <div class="loading-text">
+                <span class="letter">A</span><span class="letter">a</span><span class="letter">s</span><span class="letter">h</span><span class="letter">i</span><span class="letter">s</span><span class="letter">h</span>
+                <span class="space"></span>
+                <span class="letter">A</span><span class="letter">d</span><span class="letter">h</span><span class="letter">i</span><span class="letter">k</span><span class="letter">a</span><span class="letter">r</span><span class="letter">i</span>
+            </div>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
+            </div>
+            <div class="loading-status">
+                Loading Portfolio<span class="dots">
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                </span>
             </div>
         </div>
     </div>
@@ -27,31 +62,32 @@
         <div class="navbar-container">
             <!-- Left: Profile Photo -->
             <div class="navbar-left">
-                <img src="images/logo.png" alt="Aashish Profile" class="profile-photo">
+                <img src="images/logo.png" alt="Aashish Profile" class="profile-photo" title="Refresh Website" style="cursor: pointer;" onclick="location.reload()">
+                <span class="navbar-name" style="cursor: pointer;" onclick="location.reload()">Aashish Adhikari</span>
             </div>
             
             <!-- Center: Navigation Menu (Desktop) -->
             <div class="navbar-center">
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#home" class="nav-link active" title="Go to Home Section">Home</a></li>
+                    <li><a href="#about" class="nav-link" title="Go to About Section">About</a></li>
+                    <li><a href="#skills" class="nav-link" title="Go to Skills Section">Skills</a></li>
+                    <li><a href="#projects" class="nav-link" title="Go to Projects Section">Projects</a></li>
+                    <li><a href="#contact" class="nav-link" title="Go to Contact Section">Contact</a></li>
                 </ul>
             </div>
             
             <!-- Right: Theme Toggle + Hamburger -->
             <div class="navbar-right">
                 <!-- Theme Toggle Button -->
-                <div class="theme-toggle" id="theme-toggle">
+                <div class="theme-toggle" id="theme-toggle" title="Toggle Dark/Light Mode">
                     <div class="theme-toggle-slider"></div>
                     <i class="fas fa-sun theme-toggle-icon sun"></i>
                     <i class="fas fa-moon theme-toggle-icon moon"></i>
                 </div>
                 
                 <!-- Hamburger Menu (Mobile) -->
-                <div class="hamburger" id="hamburger">
+                <div class="hamburger" id="hamburger" title="Open Mobile Menu">
                     <div class="hamburger-line"></div>
                     <div class="hamburger-line"></div>
                     <div class="hamburger-line"></div>
@@ -61,21 +97,59 @@
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <a href="#home" class="mobile-nav-link active">Home</a>
-            <a href="#about" class="mobile-nav-link">About</a>
-            <a href="#skills" class="mobile-nav-link">Skills</a>
-            <a href="#projects" class="mobile-nav-link">Projects</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <a href="#home" class="mobile-nav-link active" title="Go to Home Section">Home</a>
+            <a href="#about" class="mobile-nav-link" title="Go to About Section">About</a>
+            <a href="#skills" class="mobile-nav-link" title="Go to Skills Section">Skills</a>
+            <a href="#projects" class="mobile-nav-link" title="Go to Projects Section">Projects</a>
+            <a href="#contact" class="mobile-nav-link" title="Go to Contact Section">Contact</a>
         </div>
     </nav>
+
+    <!-- Floating Bookmark Navigation -->
+    <div class="bookmark-nav" id="bookmark-nav">
+        <div class="bookmark-container">
+            <div class="bookmark-item" data-section="home">
+                <div class="bookmark-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span class="tooltip">Home</span>
+            </div>
+            <div class="bookmark-item" data-section="about">
+                <div class="bookmark-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="tooltip">About</span>
+            </div>
+            <div class="bookmark-item" data-section="skills">
+                <div class="bookmark-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="tooltip">Skills</span>
+            </div>
+            <div class="bookmark-item" data-section="projects">
+                <div class="bookmark-icon">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <span class="tooltip">Projects</span>
+            </div>
+            <div class="bookmark-item" data-section="contact">
+                <div class="bookmark-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="tooltip">Contact</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Go to Top Button (Mobile) -->
+    <button class="go-to-top" id="go-to-top" title="Go to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section">
-            <!-- Particle Canvas -->
-            <canvas id="particle-canvas"></canvas>
-            
             <!-- Hero Content -->
             <div class="hero-container">
                 <div class="hero-content">
@@ -93,26 +167,37 @@
                     
                     <!-- Description -->
                     <p class="hero-description">
-                        I create innovative web applications using modern technologies
-                        like Python, Django, Flask, and JavaScript. Passionate about
-                        turning ideas into digital reality.
+                        I create web applications using Python, Django, HTML, CSS, and JavaScript. 
+                        Passionate about exploring AI and ML and turning ideas into digital solutions.
                     </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero-buttons">
+                        <a href="mailto:aashish.adhikari@example.com" class="btn btn-primary" title="Send me an email">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                        <a href="assets/Aashish_CV.pdf" class="btn btn-secondary" download="Aashish_Adhikari_CV.pdf" title="Download my CV/Resume">
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                    </div>
                     
                     <!-- Social Links -->
                     <div class="hero-social">
-                        <a href="#" class="social-link" aria-label="GitHub">
+                        <a href="https://github.com/aashishadk0" class="social-link" aria-label="GitHub" target="_blank" title="Visit my GitHub profile">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/aashish-adk" class="social-link" aria-label="LinkedIn" target="_blank" title="Connect with me on LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com/aashishadk0" class="social-link" aria-label="X (Twitter)" target="_blank" title="Follow me on X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Facebook">
+                        <a href="https://facebook.com/aashishadk0" class="social-link" aria-label="Facebook" target="_blank" title="Connect with me on Facebook">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
+                        <a href="https://instagram.com/aashishadk0" class="social-link" aria-label="Instagram" target="_blank" title="Follow me on Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -121,7 +206,7 @@
                 <!-- Profile Image -->
                 <div class="hero-image">
                     <div class="image-container">
-                        <img src="/images/aashish.jpg" alt="Aashish Adhikari" class="profile-image">
+                        <img src="images/aashish.jpg" alt="Aashish Adhikari" class="profile-image">
                         
                         <!-- Floating Badges -->
                         <div class="floating-badge badge-1">
@@ -142,36 +227,86 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); padding: 2rem; position: relative; z-index: 2;">
-            <div style="text-align: center; max-width: 800px;">
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">About Me</h2>
-                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">I'm a BCA student passionate about web development and technology. Currently studying at Lumbini ICT Campus in Nawalpur, Nepal.</p>
-            </div>
-        </section>
+        <section id="about" class="about-section">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header fade-section">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Get to know more about who I am, what I do, and my current skills</p>
+                </div>
 
-        <!-- Skills Section -->
-        <section id="skills" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); padding: 2rem;">
-            <div style="text-align: center; max-width: 800px;">
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Skills</h2>
-                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">HTML, CSS, JavaScript, React, Node.js, and more technologies I'm learning every day.</p>
-            </div>
-        </section>
+                <div class="about-container">
+                    <!-- Top Row: About Text and Stats -->
+                    <div class="about-top-row">
+                        <!-- About Content -->
+                        <div class="about-content fade-left delay-1">
+                            <div class="about-text">
+                                <h3>Who Am I?</h3>
+                                <p>
+                                    I'm a passionate Full Stack Web Developer specializing in Python backend development with Django and Flask, 
+                                    combined with modern frontend technologies like HTML5, CSS3, and JavaScript.
+                                </p>
+                                <p>
+                                    I'm constantly exploring new technologies, particularly in AI and ML, while building digital solutions 
+                                    that make a difference. I believe in continuous learning and staying updated with the tech landscape.
+                                </p>
+                            </div>
+                        </div>
 
-        <!-- Projects Section -->
-        <section id="projects" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); padding: 2rem;">
-            <div style="text-align: center; max-width: 800px;">
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Projects</h2>
-                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">Here are some of the projects I've worked on during my learning journey.</p>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); padding: 2rem;">
-            <div style="text-align: center; max-width: 800px;">
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--brand-color); margin-bottom: 2rem;">Contact</h2>
-                <p style="font-size: 1.2rem; color: var(--text-primary); line-height: 1.8;">Let's connect! Reach out to me for collaboration or just to say hello.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="mailto:aashish@example.com" style="color: var(--brand-color); text-decoration: none; font-size: 1.2rem;">aashish@example.com</a>
+                        <!-- About Stats -->
+                        <div class="about-stats fade-right delay-2">
+                            <div class="stats-container">
+                                <div class="stat-item scale-in delay-1">
+                                    <div class="stat-number" data-count="5" data-plus="true">0</div>
+                                    <div class="stat-label">Projects Completed</div>
+                                </div>
+                                <div class="stat-item scale-in delay-2">
+                                    <div class="stat-number" data-count="1" data-start-year="2025" data-plus="true">0</div>
+                                    <div class="stat-label">Years Experience</div>
+                                </div>
+                                <div class="stat-item scale-in delay-3">
+                                    <div class="stat-number" data-count="100">0</div>
+                                    <div class="stat-suffix">%</div>
+                                    <div class="stat-label">Client Satisfaction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Full Width Skills Highlight -->
+                    <div class="skills-highlight fade-up delay-3">
+                        <h3>What I Do</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item fade-up delay-1">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h4>Frontend Development</h4>
+                                <p>Creating responsive and interactive user interfaces using HTML, CSS, JavaScript, and modern frameworks.</p>
+                            </div>
+                            <div class="skill-item fade-up delay-2">
+                                <div class="skill-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h4>Backend Development</h4>
+                                <p>Building robust server-side applications with Python, Django, Flask, and database management.</p>
+                            </div>
+                            <div class="skill-item fade-up delay-3">
+                                <div class="skill-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4>AI & ML</h4>
+                                <p>Exploring artificial intelligence and machine learning to create intelligent web applications.</p>
+                            </div>
+                            <div class="skill-item fade-up delay-4">
+                                <div class="skill-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4>Responsive Design</h4>
+                                <p>Ensuring optimal user experience across all devices with mobile-first design approach.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
