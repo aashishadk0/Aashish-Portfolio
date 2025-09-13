@@ -572,3 +572,337 @@
         animation: none !important;
     }
 }
+
+/* ===== SKILLS SECTION RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 0 0 2rem 0;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .tool-item {
+        padding: 1.2rem;
+    }
+    
+    .tool-item .tool-icon i {
+        font-size: 2.2rem;
+    }
+    
+    .tool-item span {
+        font-size: 0.9rem;
+    }
+    
+    .learning-section {
+        margin-top: 1rem;
+    }
+    
+    .learning-tags {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .learning-tag {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .main-skills h3,
+    .supporting-skills h3,
+    .learning-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 0 0 1.5rem 0;
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .tool-item {
+        padding: 1rem;
+    }
+    
+    .tool-item .tool-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .tool-item span {
+        font-size: 0.85rem;
+    }
+    
+    .skill-bar {
+        padding: 1.2rem;
+    }
+    
+    .main-skills h3,
+    .supporting-skills h3,
+    .learning-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .learning-tags {
+        gap: 0.6rem;
+        max-width: 400px;
+    }
+    
+    .learning-tag {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== EDUCATION SECTION RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .education-section {
+        padding: 3rem 0;
+    }
+
+    /* Timeline Responsive */
+    .education-timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-icon {
+        left: 8px;
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .timeline-content::before {
+        left: -8px;
+        border-right-width: 8px;
+        border-top-width: 8px;
+        border-bottom-width: 8px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-content h4 {
+        font-size: 1.1rem;
+    }
+
+    .institution {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-period {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Education status badges - mobile optimized */
+    .education-status {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .skill-tags {
+        gap: 0.4rem;
+    }
+
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Certificates Grid Responsive */
+    .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Hide third certificate on mobile */
+    .certificates-grid .certificate-photo-card:nth-child(3) {
+        display: none;
+    }
+
+    /* Photo-based certificates responsive */
+    .cert-image-container {
+        height: 200px;
+    }
+
+    .cert-overlay {
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+
+    .cert-info h4 {
+        font-size: 1rem;
+    }
+
+    .cert-info .cert-provider {
+        font-size: 0.85rem;
+    }
+
+    .cert-info .cert-date {
+        font-size: 0.8rem;
+    }
+
+    /* Traditional certificate cards */
+    .certificate-card {
+        padding: 1.5rem;
+    }
+
+    .cert-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .certificate-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .certificate-card .cert-provider {
+        font-size: 0.9rem;
+    }
+
+    .cert-description {
+        font-size: 0.9rem;
+    }
+
+    .subsection-title {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    /* See More Button Responsive */
+    .see-more-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+}
+
+@media (max-width: 480px) {
+    .education-section {
+        padding: 2rem 0;
+    }
+
+    .education-timeline::before {
+        left: 15px;
+    }
+
+    .timeline-item {
+        padding-left: 50px;
+        margin-bottom: 1.5rem;
+    }
+
+    .timeline-icon {
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+
+    .timeline-content {
+        padding: 1rem;
+    }
+
+    .timeline-content::before {
+        left: -6px;
+        border-right-width: 6px;
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content h4 {
+        font-size: 1rem;
+    }
+
+    .timeline-period {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Education status badges - small mobile */
+    .education-status {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.5rem;
+        margin-left: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    /* Certificates on small mobile - still 2 columns */
+    .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .certificates-grid .certificate-photo-card:nth-child(3) {
+        display: none;
+    }
+
+    .certificate-card {
+        padding: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    /* Photo certificates for mobile */
+    .cert-image-container {
+        height: 180px;
+    }
+
+    .cert-overlay {
+        padding: 1rem 0.8rem 0.8rem 0.8rem;
+    }
+
+    .cert-info h4 {
+        font-size: 0.9rem;
+    }
+
+    .certificates-grid {
+        padding: 0 0.5rem;
+    }
+
+    .subsection-title {
+        font-size: 1.4rem;
+    }
+
+    .see-more-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}

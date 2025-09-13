@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (href.startsWith('#')) {
                 const target = document.querySelector(href);
                 if (target) {
-                    const offsetTop = target.offsetTop - 60; // Account for reduced navbar height
+                    const offsetTop = target.offsetTop - 60; // Perfect offset for positioning
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetSection);
             
             if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for navbar height
+                const offsetTop = targetElement.offsetTop - 60; // Perfect offset for positioning
                 
                 window.scrollTo({
                     top: offsetTop,
@@ -577,3 +577,175 @@ document.addEventListener('DOMContentLoaded', function() {
         staggerObserver.observe(container);
     });
 });
+
+// ===== SKILLS PROGRESS BAR ANIMATION =====
+const animateProgressBars = () => {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressFill = entry.target;
+                const width = progressFill.getAttribute('data-width');
+                
+                setTimeout(() => {
+                    progressFill.style.width = width + '%';
+                }, 200);
+                
+                progressObserver.unobserve(progressFill);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+};
+
+// Initialize progress bar animation
+document.addEventListener('DOMContentLoaded', animateProgressBars);
+
+// ===== CERTIFICATE SEE MORE FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+    const hiddenCertificates = document.getElementById('certificates-hidden');
+    const btnText = seeMoreBtn.querySelector('.btn-text');
+    const btnIcon = seeMoreBtn.querySelector('.btn-icon');
+    
+    let isExpanded = false;
+    
+    seeMoreBtn.addEventListener('click', function() {
+        if (!isExpanded) {
+            // Show hidden certificates
+            hiddenCertificates.style.display = 'grid';
+            hiddenCertificates.style.animation = 'fadeInUp 0.5s ease forwards';
+            
+            // Update button
+            btnText.textContent = 'Show Less Certificates';
+            btnIcon.style.transform = 'rotate(180deg)';
+            seeMoreBtn.classList.add('expanded');
+            
+            isExpanded = true;
+            
+            // Smooth scroll to show new content
+            setTimeout(() => {
+                hiddenCertificates.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 100);
+            
+        } else {
+            // Hide certificates
+            hiddenCertificates.style.animation = 'fadeOutDown 0.5s ease forwards';
+            
+            // Update button
+            btnText.textContent = 'See More Certificates';
+            btnIcon.style.transform = 'rotate(0deg)';
+            seeMoreBtn.classList.remove('expanded');
+            
+            setTimeout(() => {
+                hiddenCertificates.style.display = 'none';
+            }, 500);
+            
+            isExpanded = false;
+            
+            // Scroll back to see more button
+            seeMoreBtn.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+    });
+});
+
+// ===== CERTIFICATE LIGHTBOX FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = document.getElementById('certLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const downloadBtns = document.querySelectorAll('.download-btn');
+    
+    // View certificate functionality
+    viewBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const certSrc = this.getAttribute('data-cert');
+            lightboxImage.src = certSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+    
+    // Download certificate functionality
+    downloadBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const certSrc = this.getAttribute('data-cert');
+            const certName = this.getAttribute('data-name');
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.href = certSrc;
+            link.download = certName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    });
+    
+    // Close lightbox functionality
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+        setTimeout(() => {
+            lightboxImage.src = '';
+        }, 300);
+    };
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    // Close on background click
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+});
+
+// CSS animations for certificate reveal (add to CSS if not present)
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeOutDown {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    }
+`;
+document.head.appendChild(style);
