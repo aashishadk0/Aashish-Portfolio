@@ -2252,6 +2252,29 @@ body {
 .skill-percentage {
   font-weight: 600;
   color: var(--brand-color);
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--brand-color) 0%,
+    #00ff00 25%,
+    #00cc00 50%,
+    #00ff00 75%,
+    var(--brand-color) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metallicShine 3s ease-in-out infinite;
+}
+
+@keyframes metallicShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .progress-bar {
@@ -2280,27 +2303,41 @@ body {
   content: '';
   position: absolute;
   top: 0;
-  left: -30%;
-  width: 30%;
+  left: -50%;
+  width: 50%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
-  animation: shine 3s ease-in-out infinite;
-  animation-delay: 2.5s;
+  animation: progressShine 2.5s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
-@keyframes shine {
+@keyframes progressShine {
   0% {
-    left: -30%;
+    left: -50%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    left: 100%;
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
   }
   100% {
     left: 100%;
+    opacity: 0;
   }
 }
 
@@ -2613,6 +2650,20 @@ body {
   margin: 0 auto 2rem auto;
 }
 
+/* Third photo certificate - shown by default on desktop, hidden on mobile */
+#certificates-photo-extra {
+  display: none; /* Hidden by default, only shown on mobile when "See More" is clicked */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Mobile-only class for responsive behavior */
+.mobile-only {
+  display: none;
+}
+
 /* Photo-based Certificate Cards */
 .certificate-photo-card {
   position: relative;
@@ -2620,10 +2671,59 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--brand-color);
+}
+
+/* Modern shining animation - always visible */
+.certificate-photo-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%, 
+    rgba(0, 255, 0, 0.1) 50%, 
+    transparent 70%
+  );
+  animation: shine 3s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+/* Light theme improvements */
+[data-theme="light"] .certificate-photo-card {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.05) 0%, 
+    rgba(255, 255, 255, 0.8) 100%);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(0, 255, 0, 0.6);
+}
+
+[data-theme="light"] .certificate-photo-card::before {
+  background: linear-gradient(
+    45deg,
+    transparent 30%, 
+    rgba(0, 255, 0, 0.2) 50%, 
+    transparent 70%
+  );
 }
 
 .certificate-photo-card:hover {
   box-shadow: 0 20px 40px rgba(0, 255, 0, 0.15);
+  transform: translateY(-5px);
 }
 
 .cert-image-container {
@@ -2631,6 +2731,13 @@ body {
   width: 100%;
   height: 250px;
   overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+[data-theme="light"] .cert-image-container {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .cert-image {
@@ -2638,13 +2745,8 @@ body {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-  background: linear-gradient(135deg, #2d2d2d, #404040);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--brand-color);
-  font-size: 1.2rem;
-  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .cert-overlay {
@@ -2652,10 +2754,17 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+/* Light theme overlay improvements */
+[data-theme="light"] .cert-overlay {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  backdrop-filter: blur(5px);
 }
 
 .certificate-photo-card:hover .cert-overlay {
@@ -2672,7 +2781,7 @@ body {
   gap: 1rem;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 3;
+  z-index: 4;
 }
 
 .certificate-photo-card:hover .cert-actions {
@@ -2693,6 +2802,25 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Action button shine effect */
+.cert-action-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.cert-action-btn:hover::before {
+  transform: translateX(100%);
 }
 
 .cert-action-btn:hover {
@@ -2701,11 +2829,24 @@ body {
   box-shadow: 0 8px 25px rgba(0, 255, 0, 0.6);
 }
 
+/* Light theme action buttons */
+[data-theme="light"] .cert-action-btn {
+  background: var(--brand-color);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .cert-action-btn:hover {
+  background: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+}
+
 .cert-info h4 {
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cert-info .cert-provider {
@@ -2713,11 +2854,30 @@ body {
   font-weight: 600;
   margin-bottom: 0.3rem;
   font-size: 0.9rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .cert-info .cert-date {
-  color: #ccc;
+  color: #e0e0e0;
   font-size: 0.85rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme text improvements */
+[data-theme="light"] .cert-info h4 {
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="light"] .cert-info .cert-provider {
+  color: var(--brand-color);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+}
+
+[data-theme="light"] .cert-info .cert-date {
+  color: #f0f0f0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* Traditional Certificate Cards (for See More section) */

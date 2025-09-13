@@ -742,23 +742,97 @@
         padding: 0.4rem 0.8rem;
     }
 
-    /* Certificates Grid Responsive */
+/* ===== CERTIFICATES RESPONSIVE BASED ON SPECIFIC BREAKPOINTS ===== */
+
+/* Large screens (1014px+) - 3 certificates side by side */
+@media (min-width: 1015px) {
     .certificates-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem;
+    }
+    
+    .desktop-third-cert {
+        display: block !important;
+    }
+    
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+/* Medium screens (680px to 1014px) - 2 certificates side by side, 3rd in Show More */
+@media (min-width: 681px) and (max-width: 1014px) {
+    .certificates-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .desktop-third-cert {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block !important;
+    }
+    
+    #certificates-photo-extra {
+        display: none !important;
+        margin: 0 !important;
+    }
+    
+    #certificates-photo-extra.show-expanded {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        margin-bottom: 1rem !important;
+    }
+}
+
+/* Small screens (680px and below) - 1 certificate in landscape, others in Show More */
+@media (max-width: 680px) {
+    .certificates-grid {
+        grid-template-columns: 1fr !important;
         gap: 1rem;
+        margin-bottom: 1rem !important;
         padding: 0 1rem;
     }
 
-    /* Hide third certificate on mobile */
-    .certificates-grid .certificate-photo-card:nth-child(3) {
-        display: none;
+    /* Hide the third certificate in main grid */
+    .desktop-third-cert {
+        display: none !important;
     }
 
-    /* Photo-based certificates responsive */
+    /* Show mobile-only section and hide by default */
+    .mobile-only {
+        display: block !important;
+    }
+
+    #certificates-photo-extra {
+        display: none !important;
+        margin: 0 !important;
+    }
+
+    /* Show photo extra certificates when expanded - single column */
+    #certificates-photo-extra.show-expanded {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        margin-bottom: 1rem !important;
+        padding: 0 1rem;
+    }
+
+    .certificate-card {
+        padding: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    /* Photo certificates for small screens - landscape style */
     .cert-image-container {
-        height: 200px;
+        height: 160px;
     }
 
+    /* Photo-based certificates responsive - landscape style */
     .cert-overlay {
         padding: 1.5rem 1rem 1rem 1rem;
     }
@@ -809,7 +883,6 @@
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
-}
 }
 
 @media (max-width: 480px) {
@@ -865,24 +938,9 @@
         margin-bottom: 0.3rem;
     }
 
-    /* Certificates on small mobile - still 2 columns */
-    .certificates-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
-    }
-
-    .certificates-grid .certificate-photo-card:nth-child(3) {
+    /* Remove extra spacing when certificates are hidden */
+    .achievements-section .certificates-grid:empty {
         display: none;
-    }
-
-    .certificate-card {
-        padding: 1rem;
-        margin: 0 0.5rem;
-    }
-
-    /* Photo certificates for mobile */
-    .cert-image-container {
-        height: 180px;
     }
 
     .cert-overlay {
@@ -892,6 +950,7 @@
     .cert-info h4 {
         font-size: 0.9rem;
     }
+}
 
     .certificates-grid {
         padding: 0 0.5rem;

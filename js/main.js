@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', animateProgressBars);
 // ===== CERTIFICATE SEE MORE FUNCTIONALITY =====
 document.addEventListener('DOMContentLoaded', function() {
     const seeMoreBtn = document.getElementById('seeMoreBtn');
-    const hiddenCertificates = document.getElementById('certificates-hidden');
+    const photoExtraCertificates = document.getElementById('certificates-photo-extra');
     const btnText = seeMoreBtn.querySelector('.btn-text');
     const btnIcon = seeMoreBtn.querySelector('.btn-icon');
     
@@ -618,9 +618,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     seeMoreBtn.addEventListener('click', function() {
         if (!isExpanded) {
-            // Show hidden certificates
-            hiddenCertificates.style.display = 'grid';
-            hiddenCertificates.style.animation = 'fadeInUp 0.5s ease forwards';
+            // Show photo extra certificate (3rd photo cert)
+            photoExtraCertificates.classList.add('show-expanded');
+            photoExtraCertificates.style.animation = 'fadeInUp 0.5s ease forwards';
             
             // Update button
             btnText.textContent = 'Show Less Certificates';
@@ -631,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Smooth scroll to show new content
             setTimeout(() => {
-                hiddenCertificates.scrollIntoView({ 
+                photoExtraCertificates.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'nearest' 
                 });
@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
         } else {
             // Hide certificates
-            hiddenCertificates.style.animation = 'fadeOutDown 0.5s ease forwards';
+            photoExtraCertificates.style.animation = 'fadeOutDown 0.5s ease forwards';
             
             // Update button
             btnText.textContent = 'See More Certificates';
@@ -647,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function() {
             seeMoreBtn.classList.remove('expanded');
             
             setTimeout(() => {
-                hiddenCertificates.style.display = 'none';
+                photoExtraCertificates.classList.remove('show-expanded');
             }, 500);
             
             isExpanded = false;

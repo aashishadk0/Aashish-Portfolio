@@ -560,7 +560,7 @@
                 <div class="achievements-section fade-up delay-2">
                     <h3 class="subsection-title">Achievements & Certifications</h3>
                     
-                    <!-- Initial 3 certificates (visible) -->
+                    <!-- Initial 2 certificates (always visible) + 3rd on desktop -->
                     <div class="certificates-grid" id="certificates-visible">
                         <div class="certificate-photo-card fade-up delay-3">
                             <div class="cert-image-container">
@@ -604,7 +604,7 @@
                             </div>
                         </div>
 
-                        <div class="certificate-photo-card fade-up delay-5">
+                        <div class="certificate-photo-card fade-up delay-5 desktop-third-cert">
                             <div class="cert-image-container">
                                 <img src="images/cert3.jpg" alt="First on Secondary Level Quiz Competition" loading="lazy" class="cert-image">
                                 <div class="cert-actions">
@@ -626,33 +626,27 @@
                         </div>
                     </div>
 
-                    <!-- Hidden certificates (show on "See More") -->
-                    <div class="certificates-grid hidden" id="certificates-hidden">
-                        <div class="certificate-card">
-                            <div class="cert-icon">
-                                <i class="fab fa-react"></i>
+                    <!-- Third photo certificate (mobile only - hidden by default) -->
+                    <div class="certificates-grid hidden mobile-only" id="certificates-photo-extra">
+                        <div class="certificate-photo-card fade-up delay-5">
+                            <div class="cert-image-container">
+                                <img src="images/cert3.jpg" alt="First on Secondary Level Quiz Competition" loading="lazy" class="cert-image">
+                                <div class="cert-actions">
+                                    <button class="cert-action-btn view-btn" data-cert="images/cert3.jpg" title="View Certificate">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="cert-action-btn download-btn" data-cert="images/cert3.jpg" data-name="First_Secondary_Level_Quiz_Competition.jpg" title="Download Certificate">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <div class="cert-overlay">
+                                    <div class="cert-info">
+                                        <h4>First on Secondary Level Quiz Competition</h4>
+                                        <p class="cert-provider">Secondary School</p>
+                                        <p class="cert-date">2023</p>
+                                    </div>
+                                </div>
                             </div>
-                            <h4>React Development Certificate</h4>
-                            <p class="cert-provider">Meta (Facebook)</p>
-                            <p class="cert-description">Modern React development including hooks, state management, and component architecture.</p>
-                        </div>
-
-                        <div class="certificate-card">
-                            <div class="cert-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4>Machine Learning Certificate</h4>
-                            <p class="cert-provider">Coursera</p>
-                            <p class="cert-description">Supervised and unsupervised learning, neural networks, and practical ML applications.</p>
-                        </div>
-
-                        <div class="certificate-card">
-                            <div class="cert-icon">
-                                <i class="fab fa-git-alt"></i>
-                            </div>
-                            <h4>Git & Version Control</h4>
-                            <p class="cert-provider">GitHub</p>
-                            <p class="cert-description">Advanced Git workflows, collaboration, branching strategies, and open source contribution.</p>
                         </div>
                     </div>
 
