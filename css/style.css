@@ -1884,7 +1884,7 @@ body {
   font-size: 3rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   position: relative;
   display: inline-block;
 }
@@ -2418,7 +2418,7 @@ body {
 /* ===== EDUCATION SECTION STYLES ===== */
 .education-section {
   background: var(--bg-primary);
-  padding: 0 0 4rem 0;
+  padding: 0 0 3.125rem 0;
   position: relative;
   scroll-margin-top: 80px;
 }
@@ -2944,4 +2944,207 @@ body {
   background: rgba(0, 150, 0, 0.15);
   color: #006600;
   border-color: rgba(0, 150, 0, 0.5);
+}
+
+/* ===== PROJECTS SECTION STYLES ===== */
+.projects-section {
+  background: var(--bg-primary);
+  padding: 0 0 4rem 0;
+  position: relative;
+  scroll-margin-top: 80px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-top: 1.6875rem;
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 255, 0, 0.1);
+}
+
+.project-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-btn {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.live-btn {
+  background: var(--brand-color);
+  color: #000000;
+}
+
+.live-btn:hover {
+  background: #00cc00;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+.code-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.code-btn:hover {
+  background: white;
+  color: #000000;
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.project-status {
+  flex-shrink: 0;
+}
+
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.status-badge.current {
+  background: rgba(0, 255, 0, 0.2);
+  color: var(--brand-color);
+  border-color: rgba(0, 255, 0, 0.5);
+}
+
+.status-badge.completed {
+  background: rgba(0, 255, 0, 0.2);
+  color: var(--brand-color);
+  border-color: rgba(0, 255, 0, 0.5);
+}
+
+.project-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.project-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.project-features li i {
+  color: var(--brand-color);
+  font-size: 0.8rem;
+}
+
+/* Light theme adjustments for projects */
+[data-theme="light"] .status-badge.current {
+  background: rgba(0, 200, 0, 0.15);
+  color: #008800;
+  border-color: rgba(0, 200, 0, 0.5);
+}
+
+[data-theme="light"] .status-badge.completed {
+  background: rgba(0, 200, 0, 0.15);
+  color: #008800;
+  border-color: rgba(0, 200, 0, 0.5);
+}
+
+/* Dark theme adjustments for projects */
+[data-theme="dark"] .project-card {
+  background: rgba(255, 255, 255, 0.1);
 }

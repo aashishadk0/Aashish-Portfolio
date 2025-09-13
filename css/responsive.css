@@ -906,3 +906,132 @@
         font-size: 0.85rem;
     }
 }
+
+/* ===== PROJECTS SECTION RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 0 0 2rem 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .project-card {
+        margin: 0 1rem;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-content {
+        padding: 1.2rem;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-tech {
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-tech .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .project-features {
+        display: none;
+    }
+
+    .project-actions {
+        flex-direction: row;
+        gap: 0.8rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .project-btn {
+        width: auto;
+        justify-content: center;
+        padding: 0.8rem;
+        font-size: 1rem;
+        min-width: 48px;
+    }
+
+    .project-btn span {
+        display: none;
+    }
+
+    .project-btn i {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: 0 0 1.5rem 0;
+    }
+
+    .projects-grid {
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .project-card {
+        margin: 0 0.5rem;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-content {
+        padding: 1rem;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+    }
+
+    .project-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .project-tech .skill-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .project-features li {
+        font-size: 0.8rem;
+    }
+
+    .project-btn {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .status-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
