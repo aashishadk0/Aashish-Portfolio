@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aashishadk0.github.io/Copilot-aashish/sitemap.xml
+Sitemap: https://aashishadk0.github.io/Aashish-Portfolio/sitemap.xml
