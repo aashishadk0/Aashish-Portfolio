@@ -125,12 +125,6 @@ function validateForm() {
         isValid = false;
     }
     
-    // Validate Google reCAPTCHA
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-        showNotification('Please complete the reCAPTCHA verification', 'error');
-        isValid = false;
-    }
     
     return isValid;
 }
