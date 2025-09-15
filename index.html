@@ -773,9 +773,140 @@
             <img src="" alt="Certificate" class="lightbox-image" id="lightboxImage">
         </div>
     </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title fade-up">Contact</h2>
+                <p class="section-subtitle fade-up delay-1">
+                    Let's connect and discuss your ideas.
+                </p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Contact Info Side -->
+                <div class="contact-info-side fade-up delay-2">
+                    <!-- Profile Card -->
+                    <div class="contact-profile-card">
+                        <div class="profile-image-container">
+                            <img src="images/aashish.jpg" alt="Aashish Adhikari" class="profile-image">
+                        </div>
+                        <div class="profile-info">
+                            <h3>Aashish Adhikari</h3>
+                            <p>Full Stack Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info Cards -->
+                    <div class="contact-info-cards">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span>aashishadhikari220@gmail.com</span>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span>+977 9769213894</span>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span>Gaindakot-5, Nawalpur</span>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <span>Download my Visiting Card</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="contact-social-links">
+                        <a href="https://facebook.com/aashish" class="contact-social-link" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/aashish" class="contact-social-link" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aashish-adhikari" class="contact-social-link" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Side -->
+                <div class="contact-form-side fade-up delay-3">
+                    <div class="form-container">
+                    <div class="form-header">
+                        <h3>Get in Touch</h3>
+                    </div>                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <div class="label-container">
+                                    <label for="name">Name *</label>
+                                    <span class="form-error" id="nameError"></span>
+                                </div>
+                                <input type="text" id="name" name="name" placeholder="Eg. John Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-container">
+                                    <label for="email">Email *</label>
+                                    <span class="form-error" id="emailError"></span>
+                                </div>
+                                <input type="email" id="email" name="email" placeholder="Eg. john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-container">
+                                    <label for="message">Message *</label>
+                                    <span class="form-error" id="messageError"></span>
+                                </div>
+                                <textarea id="message" name="message" rows="6" required 
+                                         placeholder="Eg. Hi Aashish, I would like to discuss a project opportunity with you..."></textarea>
+                            </div>
+
+                            <!-- Google reCAPTCHA -->
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6LfjwskrAAAAANPVRL7aUKWNmFi0OsXCKEjKnUKy"></div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="submit-btn">
+                                    <span class="btn-content">
+                                        <span class="btn-text">Send Message</span>
+                                        <span class="btn-icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                    </span>
+                                    <div class="btn-loading">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <span>Sending...</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <span class="form-error" id="mediaError"></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/hero.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>
