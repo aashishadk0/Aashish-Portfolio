@@ -15,9 +15,9 @@ function initEmailJS() {
     }
 }
 
-// Contact Form Functionality
+// Contact Form Functionality  
 function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
+    const contactForm = document.querySelector('.contact-form');
     
     if (!contactForm) return;
     
@@ -52,36 +52,47 @@ function initContactForm() {
             };
             
             // Send main email first
+            console.log('Attempting to send email with params:', mainTemplateParams);
             emailjs.send('service_1abkgq6', 'template_jkwztom', mainTemplateParams)
                 .then(function(response) {
-                    console.log('Main email sent!', response.status, response.text);
-                    
-                    // Send auto-reply email
-                    return emailjs.send('service_1abkgq6', 'template_auto_reply', autoReplyParams);
-                })
-                .then(function(response) {
-                    console.log('Auto-reply sent!', response.status, response.text);
+                    console.log('Main email sent successfully!', response.status, response.text);
                     contactForm.reset();
-                    hideLoadingState();
-                    showNotification('Message sent successfully! Check your email for confirmation.', 'success');
+                    showSuccessState();
+                    showNotification('Message sent successfully! Thank you for contacting me.', 'success');
                     
-                    // Simple success animation
-                    contactForm.style.transform = 'scale(0.98)';
+                    // Try to send auto-reply (optional)
+                    console.log('Attempting to send auto-reply with params:', autoReplyParams);
+                    emailjs.send('service_1abkgq6', 'template_auto_reply', autoReplyParams)
+                        .then(function(autoResponse) {
+                            console.log('Auto-reply sent successfully!', autoResponse.status, autoResponse.text);
+                        })
+                        .catch(function(autoError) {
+                            console.log('Auto-reply failed (this is optional):', autoError);
+                        });
+                    
+                    // Reset button after delay
                     setTimeout(() => {
-                        contactForm.style.transform = 'scale(1)';
-                    }, 200);
+                        hideLoadingState();
+                    }, 2000);
                 })
                 .catch(function(error) {
-                    console.log('Email failed...', error);
+                    console.error('EmailJS Error Details:', error);
+                    console.error('Error status:', error.status);
+                    console.error('Error text:', error.text);
                     hideLoadingState();
-                    showNotification('Failed to send message. Please try again.', 'error');
+                    showNotification('Failed to send message. Please try again or contact directly.', 'error');
                 });
         } else {
             // Fallback - just show success message
             setTimeout(() => {
                 contactForm.reset();
-                hideLoadingState();
+                showSuccessState();
                 showNotification('EmailJS not loaded. Please set up EmailJS for email functionality.', 'warning');
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    hideLoadingState();
+                }, 2000);
             }, 1000);
         }
     });
@@ -100,31 +111,36 @@ function validateForm() {
     
     // Validate name
     if (!name) {
-        showError('nameError', 'Name is required');
+        showFieldError('name', 'Please enter your name');
         isValid = false;
     } else if (name.length < 2) {
-        showError('nameError', 'Name must be at least 2 characters');
+        showFieldError('name', 'Name must be at least 2 characters');
         isValid = false;
+    } else {
+        showFieldValid('name');
     }
     
     // Validate email
     if (!email) {
-        showError('emailError', 'Email is required');
+        showFieldError('email', 'Please enter your email address');
         isValid = false;
     } else if (!isValidEmail(email)) {
-        showError('emailError', 'Please enter a valid email address');
+        showFieldError('email', 'Please enter a valid email address');
         isValid = false;
+    } else {
+        showFieldValid('email');
     }
     
     // Validate message
     if (!message) {
-        showError('messageError', 'Message is required');
+        showFieldError('message', 'Please enter your message');
         isValid = false;
     } else if (message.length < 5) {
-        showError('messageError', 'Message must be at least 5 characters');
+        showFieldError('message', 'Message must be at least 5 characters');
         isValid = false;
+    } else {
+        showFieldValid('message');
     }
-    
     
     return isValid;
 }
@@ -135,27 +151,43 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Show error message
-function showError(elementId, message) {
-    const errorElement = document.getElementById(elementId);
-    if (errorElement) {
-        errorElement.textContent = message;
-        errorElement.classList.add('show');
+// Show field error
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const formGroup = field.closest('.form-group');
+    const errorSpan = formGroup.querySelector('.form-error');
+    
+    formGroup.classList.add('invalid');
+    formGroup.classList.remove('valid');
+    if (errorSpan) {
+        errorSpan.textContent = message;
     }
+}
+
+// Show field valid
+function showFieldValid(fieldId) {
+    const field = document.getElementById(fieldId);
+    const formGroup = field.closest('.form-group');
+    
+    formGroup.classList.add('valid');
+    formGroup.classList.remove('invalid');
 }
 
 // Clear all errors
 function clearErrors() {
-    const errorElements = document.querySelectorAll('.form-error');
-    errorElements.forEach(element => {
-        element.textContent = '';
-        element.classList.remove('show');
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.classList.remove('invalid', 'valid');
+        const errorSpan = group.querySelector('.form-error');
+        if (errorSpan) {
+            errorSpan.textContent = '';
+        }
     });
 }
 
 // Loading state management
 function showLoadingState() {
-    const submitBtn = document.querySelector('.submit-btn');
+    const submitBtn = document.querySelector('.form-submit');
     if (submitBtn) {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
@@ -163,10 +195,18 @@ function showLoadingState() {
 }
 
 function hideLoadingState() {
-    const submitBtn = document.querySelector('.submit-btn');
+    const submitBtn = document.querySelector('.form-submit');
+    if (submitBtn) {
+        submitBtn.classList.remove('loading', 'success');
+        submitBtn.disabled = false;
+    }
+}
+
+function showSuccessState() {
+    const submitBtn = document.querySelector('.form-submit');
     if (submitBtn) {
         submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
+        submitBtn.classList.add('success');
     }
 }
 
@@ -192,7 +232,7 @@ function initContactEffects() {
         }
     });
     
-    // Contact card hover effects
+    // Contact card hover effects  
     const contactCards = document.querySelectorAll('.contact-card');
     contactCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -217,81 +257,58 @@ function initContactEffects() {
     }
 }
 
-// Form validation setup
+// Real-time form validation
 function initFormValidation() {
-    // Real-time validation
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
-    const mediaInput = document.getElementById('media');
+    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
     
-    if (nameInput) {
-        nameInput.addEventListener('blur', () => validateField('name'));
-        nameInput.addEventListener('input', () => clearFieldError('nameError'));
-    }
-    
-    if (emailInput) {
-        emailInput.addEventListener('blur', () => validateField('email'));
-        emailInput.addEventListener('input', () => clearFieldError('emailError'));
-    }
-    
-    if (messageInput) {
-        messageInput.addEventListener('blur', () => validateField('message'));
-        messageInput.addEventListener('input', () => clearFieldError('messageError'));
-    }
-    
-    if (mediaInput) {
-        mediaInput.addEventListener('change', () => validateField('media'));
-    }
+    formInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateSingleField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            // Clear error state on input
+            const formGroup = this.closest('.form-group');
+            formGroup.classList.remove('invalid');
+        });
+    });
 }
 
-// Validate individual field
-function validateField(fieldName) {
-    const field = document.getElementById(fieldName);
+// Validate single field for real-time validation
+function validateSingleField(field) {
+    const value = field.value.trim();
+    const fieldId = field.id;
     
-    switch (fieldName) {
+    switch (fieldId) {
         case 'name':
-            const nameValue = field.value.trim();
-            if (!nameValue) {
-                showError('nameError', 'Name is required');
-            } else if (nameValue.length < 2) {
-                showError('nameError', 'Name must be at least 2 characters');
+            if (!value) {
+                showFieldError('name', 'Please enter your name');
+            } else if (value.length < 2) {
+                showFieldError('name', 'Name must be at least 2 characters');
+            } else {
+                showFieldValid('name');
             }
             break;
             
         case 'email':
-            const emailValue = field.value.trim();
-            if (!emailValue) {
-                showError('emailError', 'Email is required');
-            } else if (!isValidEmail(emailValue)) {
-                showError('emailError', 'Please enter a valid email address');
+            if (!value) {
+                showFieldError('email', 'Please enter your email address');
+            } else if (!isValidEmail(value)) {
+                showFieldError('email', 'Please enter a valid email address');
+            } else {
+                showFieldValid('email');
             }
             break;
             
         case 'message':
-            const messageValue = field.value.trim();
-            if (!messageValue) {
-                showError('messageError', 'Message is required');
-            } else if (messageValue.length < 10) {
-                showError('messageError', 'Message must be at least 10 characters');
+            if (!value) {
+                showFieldError('message', 'Please enter your message');
+            } else if (value.length < 5) {
+                showFieldError('message', 'Message must be at least 5 characters');
+            } else {
+                showFieldValid('message');
             }
             break;
-            
-        case 'media':
-            const file = field.files[0];
-            if (file && file.size > 200 * 1024 * 1024) {
-                showError('mediaError', 'File size must be less than 200MB');
-            }
-            break;
-    }
-}
-
-// Clear field error
-function clearFieldError(errorId) {
-    const errorElement = document.getElementById(errorId);
-    if (errorElement) {
-        errorElement.textContent = '';
-        errorElement.classList.remove('show');
     }
 }
 
@@ -323,12 +340,16 @@ function showNotification(message, type = 'info') {
                     type === 'error' ? '#ff4757' : 
                     '#3498db';
     
+    // Check for dark theme and adjust text color for better contrast
+    const isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
+    const textColor = (type === 'success' && isDarkTheme) ? 'black' : 'white';
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
         background: ${bgColor};
-        color: white;
+        color: ${textColor};
         padding: 15px 20px;
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -372,41 +393,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// File input styling
-document.addEventListener('DOMContentLoaded', function() {
-    const fileInput = document.getElementById('media');
-    if (fileInput) {
-        fileInput.addEventListener('change', function() {
-            const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
-            const fileSize = this.files[0] ? (this.files[0].size / (1024 * 1024)).toFixed(2) + ' MB' : '';
-            
-            // Update file input display
-            let fileDisplay = document.querySelector('.file-display');
-            if (!fileDisplay) {
-                fileDisplay = document.createElement('div');
-                fileDisplay.className = 'file-display';
-                fileInput.parentNode.appendChild(fileDisplay);
-            }
-            
-            if (this.files[0]) {
-                fileDisplay.innerHTML = `
-                    <div style="margin-top: 10px; padding: 10px; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color);">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-file" style="color: var(--brand-color);"></i>
-                            <div>
-                                <div style="font-size: 12px; color: var(--text-primary); font-weight: 500;">${fileName}</div>
-                                <div style="font-size: 10px; color: var(--text-secondary);">${fileSize}</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                fileDisplay.innerHTML = '';
-            }
-        });
-    }
-});
-
 // CSS for notifications and form states
 const additionalCSS = `
 .notification-content {
@@ -432,14 +418,6 @@ const additionalCSS = `
 .form-group input:invalid:not(:placeholder-shown),
 .form-group textarea:invalid:not(:placeholder-shown) {
     border-color: #ff4757;
-}
-
-.file-input {
-    cursor: pointer;
-}
-
-.file-display {
-    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {

@@ -749,3 +749,15 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===== AUTOMATIC YEAR UPDATE =====
+function updateCopyrightYear() {
+    const currentYear = new Date().getFullYear();
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = currentYear;
+    }
+}
+
+// Update year when page loads
+document.addEventListener('DOMContentLoaded', updateCopyrightYear);
