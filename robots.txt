@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://aashishadk0.github.io/Aashish-Portfolio/sitemap.xml
+Sitemap: https://adhikari-aashish.com.np/sitemap.xml

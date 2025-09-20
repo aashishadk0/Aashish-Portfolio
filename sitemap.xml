@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://aashishadk0.github.io/Aashish-Portfolio/</loc>
-        <lastmod>2025-09-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
+        <loc>https://adhikari-aashish.com.np/</loc>
+    </url>
+    <url>
+        <loc>https://adhikari-aashish.com.np/#about</loc>
+    </url>
+    <url>
+        <loc>https://adhikari-aashish.com.np/#skills</loc>
+    </url>
+    <url>
+        <loc>https://adhikari-aashish.com.np/#education</loc>
+    </url>
+    <url>
+        <loc>https://adhikari-aashish.com.np/#projects</loc>
+    </url>
+    <url>
+        <loc>https://adhikari-aashish.com.np/#contact</loc>
     </url>
 </urlset>
