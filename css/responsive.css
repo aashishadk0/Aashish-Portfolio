@@ -1,4 +1,18 @@
 /* ===== RESPONSIVE DESIGN ===== */
+/* ===== LOADING SCREEN LOGO RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .loading-logo img {
+        height: 40px !important;
+        max-width: 80vw;
+    }
+}
+
+@media (max-width: 350px) {
+    .loading-logo img {
+        height: 32px !important;
+        max-width: 90vw;
+    }
+}
 
 /* ===== HERO SECTION RESPONSIVE STYLES ===== */
 

@@ -1,3 +1,14 @@
+
+// Dynamically apply animation-delay to all .loading-text .letter elements
+document.addEventListener('DOMContentLoaded', function() {
+    var loadingText = document.querySelector('.loading-text');
+    if (loadingText) {
+        var letters = loadingText.querySelectorAll('.letter');
+        letters.forEach(function(letter, idx) {
+            letter.style.animationDelay = ((idx + 1) * 0.1) + 's';
+        });
+    }
+});
 // ===== THEME TOGGLE & NAVBAR FUNCTIONALITY =====
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
