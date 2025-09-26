@@ -47,8 +47,14 @@ function initContactForm() {
             // Auto-reply email to sender
             const autoReplyParams = {
                 to_name: formData.get('name'),
-                to_email: formData.get('email'),
-                message: formData.get('message')
+                email: formData.get('email'),
+                user_message: formData.get('message'),
+                website_url: "https://adhikari-aashish.com.np",
+                current_date: new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
             };
             
             // Send main email first
@@ -61,14 +67,19 @@ function initContactForm() {
                     showNotification('Message sent successfully! Thank you for contacting me.', 'success');
                     
                     // Try to send auto-reply (optional)
-                    console.log('Attempting to send auto-reply with params:', autoReplyParams);
-                    emailjs.send('service_1abkgq6', 'template_auto_reply', autoReplyParams)
-                        .then(function(autoResponse) {
-                            console.log('Auto-reply sent successfully!', autoResponse.status, autoResponse.text);
-                        })
-                        .catch(function(autoError) {
-                            console.log('Auto-reply failed (this is optional):', autoError);
-                        });
+                    if (autoReplyParams.email && autoReplyParams.to_name) {
+                        console.log('Attempting to send auto-reply with params:', autoReplyParams);
+                        emailjs.send('service_1abkgq6', 'template_auto_reply', autoReplyParams)
+                            .then(function(autoResponse) {
+                                console.log('Auto-reply sent successfully!', autoResponse.status, autoResponse.text);
+                            })
+                            .catch(function(autoError) {
+                                console.log('Auto-reply failed (this is optional):', autoError);
+                                console.log('Auto-reply error details:', autoError.text);
+                            });
+                    } else {
+                        console.log('Auto-reply not sent: missing email or to_name', autoReplyParams);
+                    }
                     
                     // Reset button after delay
                     setTimeout(() => {
